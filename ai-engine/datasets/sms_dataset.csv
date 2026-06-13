@@ -1,0 +1,6 @@
+text,label,category,language
+"Your SBI KYC will expire today. Click http://sbi-kyc-update.xyz",phishing,kyc,english
+"आपका बिजली बिल आज रात कट जाएगा। तुरंत पेमेंट करें http://bijli-pay.xyz",phishing,electricity,hindi
+"Congratulations! You got job offer. Pay registration fee now.",phishing,job,english
+"Your OTP is 458921. Do not share it with anyone.",legitimate,banking,english
+"आपका Amazon order delivered हो गया है",legitimate,shopping,hindi

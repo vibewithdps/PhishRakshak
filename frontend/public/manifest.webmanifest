@@ -1,0 +1,62 @@
+{
+  "name": "PhishRakshak - AI Scam Detector",
+  "short_name": "PhishRakshak",
+  "description": "Installable AI scam detector for SMS, URLs, APK details, emails and suspicious call notes.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "background_color": "#eef2ff",
+  "theme_color": "#2563eb",
+  "categories": ["security", "productivity", "utilities"],
+  "lang": "en-IN",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Scan suspicious content",
+      "short_name": "Scan",
+      "description": "Open PhishRakshak scanner directly.",
+      "url": "/scan",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Scan History",
+      "short_name": "History",
+      "description": "View previously scanned messages and links.",
+      "url": "/history",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

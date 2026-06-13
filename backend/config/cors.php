@@ -1,7 +1,12 @@
-cat > backend/config/cors.php <<'EOF'
 <?php
 
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cross-Origin Resource Sharing (CORS) Configuration
+    |--------------------------------------------------------------------------
+    */
 
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
@@ -14,7 +19,7 @@ return [
     ],
 
     'allowed_origins_patterns' => [
-        '/^https:\/\/.*\.vercel\.app$/',
+        '#^https://.*\.vercel\.app$#',
     ],
 
     'allowed_headers' => ['*'],
@@ -26,4 +31,3 @@ return [
     'supports_credentials' => false,
 
 ];
-EOF

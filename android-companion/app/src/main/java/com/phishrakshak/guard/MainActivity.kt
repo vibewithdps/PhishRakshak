@@ -31,6 +31,7 @@ class MainActivity : Activity() {
         requestNotificationPermissionIfNeeded()
         NotificationHelper.ensureChannel(this)
         buildUi()
+        RoleRequestActivity.open(this)
     }
 
     private fun buildUi() {

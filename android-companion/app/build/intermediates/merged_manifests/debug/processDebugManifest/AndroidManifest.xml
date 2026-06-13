@@ -13,11 +13,18 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- SMS protection -->
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <!-- Call protection -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
+
+    <!-- Android 13+ notification permission -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <permission
@@ -45,9 +52,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- This activity asks user to enable Default SMS App + Call Screening role -->
         <activity
             android:name="com.phishrakshak.guard.RoleRequestActivity"
             android:exported="false" />
+
+        <!-- Required for default SMS app role -->
         <activity
             android:name="com.phishrakshak.guard.ComposeSmsActivity"
             android:exported="true" >
@@ -63,6 +74,7 @@
             </intent-filter>
         </activity>
 
+        <!-- Incoming SMS auto scan receiver -->
         <receiver
             android:name="com.phishrakshak.guard.SmsReceiver"
             android:exported="true"
@@ -71,6 +83,8 @@
                 <action android:name="android.provider.Telephony.SMS_DELIVER" />
             </intent-filter>
         </receiver>
+
+        <!-- MMS support receiver -->
         <receiver
             android:name="com.phishrakshak.guard.MmsReceiver"
             android:exported="true"
@@ -82,6 +96,7 @@
             </intent-filter>
         </receiver>
 
+        <!-- Required for default SMS app role -->
         <service
             android:name="com.phishrakshak.guard.HeadlessSmsSendService"
             android:exported="true"
@@ -97,6 +112,8 @@
                 <data android:scheme="mmsto" />
             </intent-filter>
         </service>
+
+        <!-- Spam call screening service -->
         <service
             android:name="com.phishrakshak.guard.PhishCallScreeningService"
             android:exported="true"

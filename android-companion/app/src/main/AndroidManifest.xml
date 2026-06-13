@@ -4,11 +4,18 @@
     <uses-feature android:name="android.hardware.telephony" android:required="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- SMS protection -->
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <!-- Call protection -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
+
+    <!-- Android 13+ notification permission -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
@@ -28,10 +35,12 @@
             </intent-filter>
         </activity>
 
+        <!-- This activity asks user to enable Default SMS App + Call Screening role -->
         <activity
             android:name=".RoleRequestActivity"
             android:exported="false" />
 
+        <!-- Required for default SMS app role -->
         <activity
             android:name=".ComposeSmsActivity"
             android:exported="true">
@@ -45,6 +54,7 @@
             </intent-filter>
         </activity>
 
+        <!-- Incoming SMS auto scan receiver -->
         <receiver
             android:name=".SmsReceiver"
             android:permission="android.permission.BROADCAST_SMS"
@@ -54,6 +64,7 @@
             </intent-filter>
         </receiver>
 
+        <!-- MMS support receiver -->
         <receiver
             android:name=".MmsReceiver"
             android:permission="android.permission.BROADCAST_WAP_PUSH"
@@ -64,6 +75,7 @@
             </intent-filter>
         </receiver>
 
+        <!-- Required for default SMS app role -->
         <service
             android:name=".HeadlessSmsSendService"
             android:permission="android.permission.SEND_RESPOND_VIA_MESSAGE"
@@ -78,6 +90,7 @@
             </intent-filter>
         </service>
 
+        <!-- Spam call screening service -->
         <service
             android:name=".PhishCallScreeningService"
             android:permission="android.permission.BIND_SCREENING_SERVICE"

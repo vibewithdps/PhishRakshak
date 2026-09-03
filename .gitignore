@@ -1,2 +1,4 @@
 android-companion/gradle-*.zip
 android-companion/gradle-*.zip
+.DS_Store
+**/.DS_Store

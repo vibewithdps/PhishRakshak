@@ -108,6 +108,20 @@ class ScamDetectionService
             ];
         }
 
+        $safeDomains = [
+            'github.com', 'linkedin.com', 'vercel.app', 'netlify.app',
+            'streamlit.app', 'fiverr.com', 'google.com', 'youtube.com',
+            'twitter.com', 'facebook.com', 'instagram.com'
+        ];
+
+        $hasSafeDomain = false;
+        foreach ($safeDomains as $safeDomain) {
+            if (str_contains($content, $safeDomain)) {
+                $hasSafeDomain = true;
+                break;
+            }
+        }
+
         // 4. Short Link / Suspicious URL Scam
         if ($this->containsAny($content, [
             'bit.ly', 'tinyurl', 't.co/', 'goo.gl', 'shorturl', 'cutt.ly',
@@ -115,7 +129,7 @@ class ScamDetectionService
             'click here', 'click now', 'open link', 'visit link',
             'tap here', 'claim link', 'verify link', 'login link',
             'link पर क्लिक', 'लिंक खोलें', 'क्लिक करें', 'लिंक पर जाएं'
-        ]) || $this->containsUrl($content)) {
+        ]) || (!$hasSafeDomain && $this->containsUrl($content))) {
             return [
                 'is_phishing' => true,
                 'confidence' => 0.82,

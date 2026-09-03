@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('scans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
-            $table->enum('type', ['sms', 'url', 'apk']);
+            $table->string('type');
             $table->text('content');
             $table->boolean('is_phishing');
             $table->float('confidence')->nullable();
